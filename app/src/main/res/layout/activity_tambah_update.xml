@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/ed_kode_barang"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:hint="Kode Barang"-->
+        <!--        android:inputType="textCapCharacters"-->
+        <!--        android:maxLength="6" />-->
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/ed_nama_barang"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:hint="Nama Barang"-->
+        <!--        android:inputType="text"-->
+        <!--        android:maxLength="100" />-->
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/ed_harga_barang"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:hint="Harga Barang"-->
+        <!--        android:inputType="number"-->
+        <!--        android:maxLength="9" />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/nim"
+            app:counterEnabled="true"
+            app:counterMaxLength="9"
+            app:endIconContentDescription="@string/nim"
+            app:endIconDrawable="@drawable/ic_check_circle_24dp"
+            app:endIconMode="custom"
+            app:errorEnabled="true"
+            app:helperText="@string/nim"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/nim"
+            app:startIconDrawable="@drawable/ic_favorite_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="9" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/nama"
+            app:counterEnabled="true"
+            app:endIconContentDescription="@string/nama"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:helperText="@string/nama"
+            app:helperTextEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/alamat"
+            app:counterEnabled="true"
+            app:endIconContentDescription="@string/alamat"
+            app:errorEnabled="true"
+            app:helperText="@string/alamat"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/alamat"
+            app:startIconDrawable="@drawable/ic_favorite_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/outlinedTextField1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/ttl"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ttl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="date" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filledTextField2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="@string/status"
+            app:counterEnabled="true"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:startIconContentDescription="@string/status"
+            app:startIconDrawable="@drawable/ic_favorite_24dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.balysv.materialripple.MaterialRippleLayout
+            style="@style/ripple"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:id="@+id/simpan_tambah_ubah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/simpan"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+
+        </com.balysv.materialripple.MaterialRippleLayout>
+
+    </LinearLayout>
+
+</ScrollView>

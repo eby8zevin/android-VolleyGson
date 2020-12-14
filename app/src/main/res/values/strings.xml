@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">VolleyGson</string>
+
+    <string name="nim">NIM</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="ttl">TTL</string>
+    <string name="status">Status</string>
+    <string name="press_once_again_to_exit">Tekan sekali lagi untuk keluar</string>
+    <string name="simpan">Simpan</string>
+    <string name="cancel">Cancel</string>
+    <string name="source_code">Source Code</string>
+    <string name="me">Ahmad Abu Hasan</string>
+
+</resources>
