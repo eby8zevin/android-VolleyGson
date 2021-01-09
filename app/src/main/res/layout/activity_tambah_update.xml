@@ -10,30 +10,6 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <!--    <EditText-->
-        <!--        android:id="@+id/ed_kode_barang"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:hint="Kode Barang"-->
-        <!--        android:inputType="textCapCharacters"-->
-        <!--        android:maxLength="6" />-->
-
-        <!--    <EditText-->
-        <!--        android:id="@+id/ed_nama_barang"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:hint="Nama Barang"-->
-        <!--        android:inputType="text"-->
-        <!--        android:maxLength="100" />-->
-
-        <!--    <EditText-->
-        <!--        android:id="@+id/ed_harga_barang"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:hint="Harga Barang"-->
-        <!--        android:inputType="number"-->
-        <!--        android:maxLength="9" />-->
-
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/filledTextField"
             android:layout_width="match_parent"
@@ -118,8 +94,7 @@
                 android:id="@+id/ttl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:inputType="date" />
+                android:focusable="false" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -154,7 +129,7 @@
                 android:id="@+id/simpan_tambah_ubah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/tombol_bulat"
                 android:text="@string/simpan"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />

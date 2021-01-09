@@ -25,7 +25,7 @@ import com.android.volley.toolbox.Volley;
 
 public class AppController extends Application {
 
-    private String TAG = AppController.class.getSimpleName();
+    private final String TAG = AppController.class.getSimpleName();
 
     private static AppController mInstance;
     private RequestQueue requestQueue;
@@ -59,8 +59,6 @@ public class AppController extends Application {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
-
         return requestQueue;
     }
-
 }

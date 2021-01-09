@@ -11,44 +11,24 @@ import java.util.Date;
 
 public class ModelBarang {
 
-//    @SerializedName("id") //samakan dengan key/id yang akan kita ambil dari API
-//    @Expose
-//    private int id;
-//    @SerializedName("kode_barang") //samakan dengan key/id yang akan kita ambil dari API
-//    @Expose
-//    private String kode_barang;
-//    @SerializedName("nama_barang") //samakan dengan key/id yang akan kita ambil dari API
-//    @Expose
-//    private String nama_barang;
-//    @SerializedName("harga_barang") //samakan dengan key/id yang akan kita ambil dari API
-//    @Expose
-//    private int harga_barang;
-
-    @SerializedName("id_data")
+    @SerializedName("id_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private int id_data;
-    @SerializedName("nim_data")
+    @SerializedName("nim_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private int nim_data;
-    @SerializedName("nama_data")
+    @SerializedName("nama_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private String nama_data;
-    @SerializedName("alamat_data")
+    @SerializedName("alamat_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private String alamat_data;
-    @SerializedName("ttl_data")
+    @SerializedName("ttl_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private Date ttl_data;
-    @SerializedName("status_data")
+    @SerializedName("status_data") //samakan dengan key/id yang akan kita ambil dari API
     @Expose
     private String status_data;
-
-//    public ModelBarang(int id, String kode_barang, String nama_barang, int harga_barang) {
-//        this.id = id;
-//        this.kode_barang = kode_barang;
-//        this.nama_barang = nama_barang;
-//        this.harga_barang = harga_barang;
-//    }
 
     public ModelBarang(int id_data, int nim_data, String nama_data, String alamat_data, Date ttl_data, String status_data) {
         this.id_data = id_data;
@@ -58,38 +38,6 @@ public class ModelBarang {
         this.ttl_data = ttl_data;
         this.status_data = status_data;
     }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getKode_barang() {
-//        return kode_barang;
-//    }
-//
-//    public void setKode_barang(String kode_barang) {
-//        this.kode_barang = kode_barang;
-//    }
-//
-//    public String getNama_barang() {
-//        return nama_barang;
-//    }
-//
-//    public void setNama_barang(String nama_barang) {
-//        this.nama_barang = nama_barang;
-//    }
-//
-//    public int getHarga_barang() {
-//        return harga_barang;
-//    }
-//
-//    public void setHarga_barang(int harga_barang) {
-//        this.harga_barang = harga_barang;
-//    }
 
     public int getId_data() {
         return id_data;

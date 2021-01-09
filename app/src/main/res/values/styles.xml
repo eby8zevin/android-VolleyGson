@@ -18,6 +18,26 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:datePickerStyle">@style/DateAdd</item>
+        <item name="android:datePickerDialogTheme">@style/DateAdd</item>
+    </style>
+
+    <style name="DateAdd" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
+    </style>
+
+    <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/colorPrimary</item>
+        <item name="android:yearListSelectorColor">@color/colorPrimary</item>
+        <item name="android:datePickerMode">calendar</item>
+        <item name="android:minDate">01/01/2000</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="DateEdit" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:calendarViewShown">false</item>
+        <item name="android:datePickerMode">spinner</item>
     </style>
 
 </resources>

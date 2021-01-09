@@ -28,8 +28,11 @@ import com.google.gson.Gson;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -37,18 +40,15 @@ import es.dmoral.toasty.Toasty;
 
 /*
  * Created by Ahmad Abu Hasan on 14/12/2020
+ * Update "dd-MM-yyyy convert yyyy-MM-dd on 08/01/2021"
  */
 
 public class TambahActivity extends AppCompatActivity {
 
     // implementasi
-//    private EditText kode_barang, nama_barang, harga_barang;
-
     private EditText nim_data, nama_data, alamat_data, ttl_data, status_data;
-    private Button btn_simpan;
 
-    private DatePickerDialog datePickerDialog;
-    private SimpleDateFormat dateFormatter;
+    private DateFormat dateShow, dateProcess;
 
     String[] status = {"Mahasiswa", "Dosen", "Mata Kuliah"};
 
@@ -61,55 +61,44 @@ public class TambahActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         // deklarasi
-//        kode_barang = findViewById(R.id.ed_kode_barang);
-//        nama_barang = findViewById(R.id.ed_nama_barang);
-//        harga_barang = findViewById(R.id.ed_harga_barang);
-
         nim_data = findViewById(R.id.nim);
         nama_data = findViewById(R.id.nama);
         alamat_data = findViewById(R.id.alamat);
         ttl_data = findViewById(R.id.ttl);
         status_data = findViewById(R.id.status);
-        btn_simpan = findViewById(R.id.simpan_tambah_ubah);
+        Button btn_simpan = findViewById(R.id.simpan_tambah_ubah);
 
         // memberi action pada floating action buttom
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mengambil text dalam edittext
-//                String kode = kode_barang.getText().toString().toUpperCase(); // agar mendapatkan text capslock
-//                String nama = nama_barang.getText().toString();
-//                String harga = harga_barang.getText().toString();
-
                 String nim = nim_data.getText().toString();
                 String nama = nama_data.getText().toString();
                 String alamat = alamat_data.getText().toString();
-                String ttl = ttl_data.getText().toString();
+                //String ttl = ttl_data.getText().toString();
                 String status = status_data.getText().toString();
 
-                // validasi kode, nama dan harga tidak boleh kosong
-//                if (kode.isEmpty()) {
-//                    Toast.makeText(TambahActivity.this, "Kode Masih Kososng!", Toast.LENGTH_SHORT).show();
-//                } else if (nama.isEmpty()) {
-//                    Toast.makeText(TambahActivity.this, "Nama Masih Kosong!", Toast.LENGTH_SHORT).show();
-//                } else if (harga.isEmpty()) {
-//                    Toast.makeText(TambahActivity.this, "Harga Masih Kosong!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    // menyimpan data ke database
-//                    try {
-//                        simpanData(kode, nama, harga);
-//                    } catch (UnsupportedEncodingException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
+                String ttl_input = ttl_data.getText().toString();
+                dateProcess = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                Date date = null;
+                try {
+                    date = dateShow.parse(ttl_input);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String ttl = null;
+                if (date != null) {
+                    ttl = dateProcess.format(date);
+                }
 
+                // validasi kode, nama dan harga tidak boleh kosong
                 if (nim.isEmpty()) {
                     Toasty.warning(TambahActivity.this, "NIM Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
                 } else if (nama.isEmpty()) {
                     Toasty.warning(TambahActivity.this, "Nama Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
                 } else if (alamat.isEmpty()) {
                     Toasty.warning(TambahActivity.this, "Alamat Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
-                } else if (ttl.isEmpty()) {
+                } else if (ttl == null) {
                     Toasty.warning(TambahActivity.this, "TTL Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
                 } else if (status.isEmpty()) {
                     Toasty.warning(TambahActivity.this, "Status Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
@@ -129,7 +118,7 @@ public class TambahActivity extends AppCompatActivity {
          * jadi nanti tanggal nya akan diformat menjadi
          * misalnya 31-12-2020
          */
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        dateShow = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         this.ttl_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,21 +134,15 @@ public class TambahActivity extends AppCompatActivity {
         });
     }
 
-    //    private void simpanData(String kode, String nama, String harga) throws UnsupportedEncodingException {
     private void simpanData(String nim, String nama, String alamat, String ttl, String status) throws UnsupportedEncodingException {
         // karena text ini kita masukkan ke-link maka kode dan nama kita konversikan ke bentuk "utf-8"
         // contoh : "Samsung Galaxy M2" ==> dikonversi menjadi "Samsung+Galaxy+M2"
-        //
         // dan ketika di simpan ke database text tidak akan berupa text konversi melaikan text aslinya.
-//        String konv_kode = URLEncoder.encode(kode, "utf-8");
-//        String konv_nama = URLEncoder.encode(nama, "utf-8");
-
         String konv_nama = URLEncoder.encode(nama, "utf-8");
         String konv_alamat = URLEncoder.encode(alamat, "utf-8");
         String konv_ttl = URLEncoder.encode(ttl, "utf-8");
         String konv_status = URLEncoder.encode(status, "utf-8");
 
-//        String url = "https://subkode.000webhostapp.com/volley_db/tambah_barang?kode=" + konv_kode + "&nama=" + konv_nama + "&harga=" + harga;
         String url = "https://blackpink-marketplace.000webhostapp.com/tugas/api/create?nim=" + nim + "&nama=" + konv_nama + "&alamat=" + konv_alamat + "&date=" + konv_ttl + "&status=" + konv_status;
         // buat StringRequest volley dan jangan lupa requestnya GET "Request.Method.GET"
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -236,40 +219,34 @@ public class TambahActivity extends AppCompatActivity {
 
     private void showDateDialog() {
 
-        /*
-         * Calendar untuk mendapatkan tanggal sekarang
-         */
+        //Calendar untuk mendapatkan tanggal sekarang
         Calendar newCalendar = Calendar.getInstance();
 
         /*
          * Initiate DatePicker dialog
+         * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
+         * Set Calendar untuk menampung tanggal yang dipilih
+         * Update EditText dengan tanggal yang kita pilih
          */
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                 /*
                  * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
-                 */
-
-                /*
                  * Set Calendar untuk menampung tanggal yang dipilih
                  */
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                /*
-                 * Update EditText dengan tanggal yang kita pilih
-                 */
-                ttl_data.setText(dateFormatter.format(newDate.getTime()));
+                //Update EditText dengan tanggal yang kita pilih
+                ttl_data.setText(dateShow.format(newDate.getTime()));
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        /*
-         * Tampilkan DatePicker dialog
-         */
+        //Tampilkan DatePicker dialog
         datePickerDialog.show();
     }
 
@@ -308,5 +285,4 @@ public class TambahActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
-
 }

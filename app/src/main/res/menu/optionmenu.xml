@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:theme="@android:style/Theme.Holo.Light"
+        android:title="@string/search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="collapseActionView|always"
+        tools:ignore="AlwaysShowAction" />
+
+    <item
+        android:id="@+id/api"
+        android:title="@string/api"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/code"
         android:title="@string/source_code"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/refresh"
+        android:title="@string/refresh"
         app:showAsAction="never" />
 
 </menu>

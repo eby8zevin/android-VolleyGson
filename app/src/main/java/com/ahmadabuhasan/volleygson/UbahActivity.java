@@ -27,8 +27,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -38,23 +41,18 @@ import es.dmoral.toasty.Toasty;
 
 /*
  * Created by Ahmad Abu Hasan on 14/12/2020
+ * Update "dd-MM-yyyy convert yyyy-MM-dd on 08/01/2021"
  */
 
 public class UbahActivity extends AppCompatActivity {
 
     // implementasi
-//    private EditText kode_barang, nama_barang, harga_barang;
-
     private EditText nim_data, nama_data, alamat_data, ttl_data, status_data;
     // untuk menerima Data dari MainActivity
-//    private String ed_kode, ed_nama;
-//    private int ed_id, ed_harga;
-
     private String et_nama, et_alamat, et_ttl, et_status;
     private int et_id, et_nim;
 
-    private DatePickerDialog datePickerDialog;
-    private SimpleDateFormat dateFormatter;
+    private DateFormat dateShow, dateProcess;
 
     String[] status = {"Mahasiswa", "Dosen", "Mata Kuliah"};
 
@@ -68,10 +66,6 @@ public class UbahActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         // deklarasi
-//        kode_barang = findViewById(R.id.ed_kode_barang);
-//        nama_barang = findViewById(R.id.ed_nama_barang);
-//        harga_barang = findViewById(R.id.ed_harga_barang);
-
         nim_data = findViewById(R.id.nim);
         nama_data = findViewById(R.id.nama);
         alamat_data = findViewById(R.id.alamat);
@@ -85,11 +79,6 @@ public class UbahActivity extends AppCompatActivity {
         // menerima data dari MainActivity menggunakana "Bundle"
         Bundle intent = getIntent().getExtras();
         if (intent != null) {
-//            ed_id = intent.getInt("ed_id");
-//            ed_kode = intent.getString("ed_kode");
-//            ed_nama = intent.getString("ed_nama");
-//            ed_harga = intent.getInt("ed_harga");
-
             et_id = intent.getInt("et_id");
             et_nim = intent.getInt("et_nim");
             et_nama = intent.getString("et_nama");
@@ -99,10 +88,6 @@ public class UbahActivity extends AppCompatActivity {
         }
 
         // lalu "Bundle" ini, akan di set ke edittext
-//        kode_barang.setText(ed_kode);
-//        nama_barang.setText(ed_nama);
-//        harga_barang.setText(String.valueOf(ed_harga));
-
         nim_data.setText(String.valueOf(et_nim));
         nama_data.setText(et_nama);
         alamat_data.setText(et_alamat);
@@ -114,28 +99,24 @@ public class UbahActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // mengambil text dalam edittext
-//                String kode = kode_barang.getText().toString();
-//                String nama = nama_barang.getText().toString();
-//                String harga = harga_barang.getText().toString();
-
                 String nim = nim_data.getText().toString();
                 String nama = nama_data.getText().toString();
                 String alamat = alamat_data.getText().toString();
-                String ttl = ttl_data.getText().toString();
+                //String ttl = ttl_data.getText().toString();
                 String status = status_data.getText().toString();
 
-                // validasi kode, nama dan harga tidak boleh kosong
-//                if (kode.isEmpty()) { // kode_barang tidak lebih dari 6 digit
-//                    Toast.makeText(UbahActivity.this, "Kode Masih Kosong!", Toast.LENGTH_SHORT).show();
-//                } else if (nama.isEmpty()) {
-//                    Toast.makeText(UbahActivity.this, "Nama Masih Kosong!", Toast.LENGTH_SHORT).show();
-//                } else if (harga.isEmpty()) { // harga barang tidak boleh dari 9 digit
-//                    Toast.makeText(UbahActivity.this, "Harga Masih Kosong!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    // mengupdate data
-//                    updateData(ed_id, kode, nama, harga);
-//                }
+                String ttl_input = ttl_data.getText().toString();
+                dateProcess = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                Date date = null;
+                try {
+                    date = dateShow.parse(ttl_input);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                assert date != null;
+                String ttl = dateProcess.format(date);
 
+                // validasi kode, nama dan harga tidak boleh kosong
                 if (nim.isEmpty()) {
                     Toasty.warning(UbahActivity.this, "NIM Masih Kosong!", Toasty.LENGTH_SHORT, true).show();
                 } else if (nama.isEmpty()) {
@@ -158,7 +139,7 @@ public class UbahActivity extends AppCompatActivity {
          * jadi nanti tanggal nya akan diformat menjadi
          * misalnya 31-12-2020
          */
-        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        dateShow = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         this.ttl_data.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,9 +154,6 @@ public class UbahActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void updateData(final int id, final String kode, final String nama, final String harga) {
-//        String url = "https://subkode.000webhostapp.com/volley_db/update_barang";
 
     private void updateData(final int id, final String nim, final String nama, final String alamat, final String ttl, final String status) {
         String url = "https://blackpink-marketplace.000webhostapp.com/tugas/api/update";
@@ -242,10 +220,6 @@ public class UbahActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // set ke params
                 HashMap<String, String> hashMap = new HashMap<>();
-//                hashMap.put("id", String.valueOf(id));
-//                hashMap.put("kode", kode);
-//                hashMap.put("nama", nama);
-//                hashMap.put("harga", harga);
 
                 hashMap.put("id", String.valueOf(id));
                 hashMap.put("nim", nim);
@@ -274,40 +248,34 @@ public class UbahActivity extends AppCompatActivity {
 
     private void showDateDialog() {
 
-        /*
-         * Calendar untuk mendapatkan tanggal sekarang
-         */
+        //Calendar untuk mendapatkan tanggal sekarang
         Calendar newCalendar = Calendar.getInstance();
 
         /*
          * Initiate DatePicker dialog
+         * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
+         * Set Calendar untuk menampung tanggal yang dipilih
+         * Update TextView dengan tanggal yang kita pilih
          */
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, R.style.DateEdit, new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                 /*
                  * Method ini dipanggil saat kita selesai memilih tanggal di DatePicker
-                 */
-
-                /*
                  * Set Calendar untuk menampung tanggal yang dipilih
                  */
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
 
-                /*
-                 * Update TextView dengan tanggal yang kita pilih
-                 */
-                ttl_data.setText(dateFormatter.format(newDate.getTime()));
+                //Update TextView dengan tanggal yang kita pilih
+                ttl_data.setText(dateShow.format(newDate.getTime()));
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
-        /*
-         * Tampilkan DatePicker dialog
-         */
+        //Tampilkan DatePicker dialog
         datePickerDialog.show();
     }
 
@@ -346,5 +314,4 @@ public class UbahActivity extends AppCompatActivity {
         });
         alertDialog.show();
     }
-
 }
