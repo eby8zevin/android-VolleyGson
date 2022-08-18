@@ -74,10 +74,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         textView.setText(this.context.getString(R.string.nim) + " : " + modelBarang.getNim_data());
 
         TextView textView1 = holder.nama;
-        textView1.setText(this.context.getString(R.string.nama) + " : " + modelBarang.getNama_data());
+        textView1.setText(this.context.getString(R.string.name) + " : " + modelBarang.getNama_data());
 
         TextView textView2 = holder.alamat;
-        textView2.setText(this.context.getString(R.string.alamat) + " : " + modelBarang.getAlamat_data());
+        textView2.setText(this.context.getString(R.string.address) + " : " + modelBarang.getAlamat_data());
 
         TextView textView3 = holder.ttl;
         textView3.setText(this.context.getString(R.string.ttl) + " : " + formatDate);
