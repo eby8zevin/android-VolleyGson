@@ -1,18 +1,4 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppThemee" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="ripple">
-        <item name="mrl_rippleAlpha">0.2</item>
-        <item name="mrl_rippleColor">#80FFFFFF</item>
-        <item name="mrl_rippleHover">true</item>
-        <item name="mrl_rippleOverlay">true</item>
-    </style>
 
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -20,6 +6,15 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:datePickerStyle">@style/DateAdd</item>
         <item name="android:datePickerDialogTheme">@style/DateAdd</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="ripple">
+        <item name="mrl_rippleAlpha">0.2</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleOverlay">true</item>
     </style>
 
     <style name="DateAdd" parent="ThemeOverlay.MaterialComponents.Dialog">
@@ -39,5 +34,4 @@
         <item name="android:calendarViewShown">false</item>
         <item name="android:datePickerMode">spinner</item>
     </style>
-
 </resources>
