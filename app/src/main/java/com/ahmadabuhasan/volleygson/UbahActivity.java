@@ -170,7 +170,7 @@ public class UbahActivity extends AppCompatActivity {
                 // jika respon status kode yg dihasilkan 1 maka berhasil
                 if (status_kode == 1) {
                     Toasty.success(UbahActivity.this, status_pesan, Toasty.LENGTH_SHORT, true).show();
-                    MainActivity.mInstance.MuatData(); // memanggil MainActivity untuk memproses method MemuatData()
+                    MainActivity.mInstance.loadData(); // memanggil MainActivity untuk memproses method MemuatData()
                     finish(); // keluar
                 } else if (status_kode == 2) {
                     Toasty.normal(UbahActivity.this, status_pesan, Toasty.LENGTH_SHORT).show();
