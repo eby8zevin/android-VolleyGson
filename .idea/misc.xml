@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/NUR AIDA HASANAH/OneDrive/Documents/GitHub/android-VolleyGson/app/src/main/res/layout/activity_main.xml" value="0.11413043478260869" />
+        <entry key="..\:/Users/NUR AIDA HASANAH/OneDrive/Documents/GitHub/android-VolleyGson/app/src/main/res/layout/activity_tambah_update.xml" value="0.1" />
+        <entry key="..\:/Users/NUR AIDA HASANAH/OneDrive/Documents/GitHub/android-VolleyGson/app/src/main/res/layout/list_items.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
