@@ -16,25 +16,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
-
-        <activity android:name=".MainActivity">
+        <activity android:name=".UbahActivity" />
+        <activity android:name=".TambahActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".TambahActivity"
-            android:label="Add Data"
-            android:windowSoftInputMode="stateHidden" />
-
-        <activity
-            android:name=".UbahActivity"
-            android:label="Edit Data"
-            android:windowSoftInputMode="stateHidden" />
-
     </application>
 
 </manifest>
