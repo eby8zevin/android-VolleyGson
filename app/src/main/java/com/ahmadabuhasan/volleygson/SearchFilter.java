@@ -4,35 +4,25 @@ import android.widget.Filter;
 
 import java.util.ArrayList;
 
-/*
- * Created by Ahmad Abu Hasan on 08/01/2021
- */
-
 public class SearchFilter extends Filter {
 
-    ArrayList<ModelBarang> filterList;
+    ArrayList<ModelData> filterList;
     RecyclerViewAdapter recyclerViewAdapter;
 
-    public SearchFilter(ArrayList<ModelBarang> filterList, RecyclerViewAdapter recyclerViewAdapter) {
+    public SearchFilter(ArrayList<ModelData> filterList, RecyclerViewAdapter recyclerViewAdapter) {
         this.filterList = filterList;
         this.recyclerViewAdapter = recyclerViewAdapter;
     }
 
-    //FILTERING OCURS
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
         FilterResults results = new FilterResults();
-        //CHECK CONSTRAINT VALIDITY
         if (constraint != null && constraint.length() > 0) {
-            //CHANGE TO UPPER
             constraint = constraint.toString().toUpperCase();
-            //STORE OUR FILTERED PLAYERS
-            ArrayList<ModelBarang> filteredData = new ArrayList<>();
+            ArrayList<ModelData> filteredData = new ArrayList<>();
 
             for (int i = 0; i < filterList.size(); i++) {
-                //CHECK
-                if (filterList.get(i).getNama_data().toUpperCase().contains(constraint)) {
-                    //ADD PLAYER TO FILTERED PLAYERS
+                if (filterList.get(i).getName_data().toUpperCase().contains(constraint)) {
                     filteredData.add(filterList.get(i));
                 }
             }
@@ -45,11 +35,8 @@ public class SearchFilter extends Filter {
         return results;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
-        recyclerViewAdapter.arrayModelBarangs = (ArrayList<ModelBarang>) results.values;
-        //REFRESH
-        recyclerViewAdapter.notifyDataSetChanged();
+        recyclerViewAdapter.arrayModelData = (ArrayList<ModelData>) results.values;
     }
 }
