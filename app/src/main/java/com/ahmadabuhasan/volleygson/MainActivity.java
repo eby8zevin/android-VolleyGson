@@ -38,11 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     public static MainActivity mInstance;
-
+    private static long back_pressed;
     private RecyclerViewAdapter adapter;
     private ArrayList<ModelBarang> arrayModelData;
-
-    private static long back_pressed;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -53,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         binding.swipeRefresh.setColorSchemeResources(R.color.colorPrimary, R.color.black);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setHasFixedSize(true);
 
         binding.fabAdd.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AddActivity.class)));
 
-        swipeRefresh();
         loadData();
+        swipeRefresh();
     }
 
     public void loadData() {
@@ -90,11 +89,31 @@ public class MainActivity extends AppCompatActivity {
             } else if (error instanceof ParseError) {
                 Toasty.error(MainActivity.this, "Parse Error", Toasty.LENGTH_SHORT, true).show();
             } else {
-                Toasty.error(MainActivity.this, "Status Kesalahan Tidak Diketahui!", Toasty.LENGTH_SHORT, true).show();
+                Toasty.error(MainActivity.this, "Unknown Error Status!", Toasty.LENGTH_SHORT, true).show();
             }
         });
 
         AppController.getInstance().addToQueue(request, "data");
+    }
+
+    public boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null;
+    }
+
+    private void swipeRefresh() {
+        binding.swipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
+            binding.swipeRefresh.setRefreshing(false);
+            boolean connection = isNetworkAvailable();
+            if (connection) {
+                Toasty.info(MainActivity.this, "Data UpToDate", Toasty.LENGTH_SHORT, true).show();
+                loadData();
+            } else {
+                binding.tvConnect.setText(R.string.not_connected);
+                adapter.clear();
+            }
+        }, 3000));
     }
 
     @Override
@@ -147,26 +166,6 @@ public class MainActivity extends AppCompatActivity {
             loadData();
         }
         return true;
-    }
-
-    public boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) this.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo != null;
-    }
-
-    private void swipeRefresh() {
-        binding.swipeRefresh.setOnRefreshListener(() -> new Handler().postDelayed(() -> {
-            binding.swipeRefresh.setRefreshing(false);
-            boolean connection = isNetworkAvailable();
-            if (connection) {
-                Toasty.info(MainActivity.this, "Data UpToDate", Toasty.LENGTH_SHORT, true).show();
-                loadData();
-            } else {
-                binding.tvConnect.setText(R.string.not_connected);
-                adapter.clear();
-            }
-        }, 3000));
     }
 
     public void onBackPressed() {
