@@ -9,31 +9,15 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-/*
-    jika sudah membuat ini jangan lupa tambahkan di manifest
-    <application
-        android:name=".AppController" <============ yang ini ya!
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        ....
-    </application>
- */
-
-/*
- * Created by Ahmad Abu Hasan on 14/12/2020
- */
-
 public class AppController extends Application {
 
     private final String TAG = AppController.class.getSimpleName();
-
     private static AppController mInstance;
     private RequestQueue requestQueue;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         mInstance = this;
     }
 
@@ -52,10 +36,10 @@ public class AppController extends Application {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-        getRequestQueueeue().add(request);
+        getRequestQueue().add(request);
     }
 
-    private RequestQueue getRequestQueueeue() {
+    private RequestQueue getRequestQueue() {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
