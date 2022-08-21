@@ -11,7 +11,6 @@
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -19,13 +18,13 @@
             app:counterEnabled="true"
             app:counterMaxLength="9"
             app:endIconContentDescription="@string/nim"
-            app:endIconDrawable="@drawable/ic_check_circle_24dp"
+            app:endIconDrawable="@drawable/ic_check_circle"
             app:endIconMode="custom"
             app:errorEnabled="true"
             app:helperText="@string/nim"
             app:helperTextEnabled="true"
             app:startIconContentDescription="@string/nim"
-            app:startIconDrawable="@drawable/ic_favorite_24dp">
+            app:startIconDrawable="@drawable/ic_favorite">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nim"
@@ -36,7 +35,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,14 +48,13 @@
             app:helperTextEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/nama"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -68,17 +65,16 @@
             app:helperText="@string/address"
             app:helperTextEnabled="true"
             app:startIconContentDescription="@string/address"
-            app:startIconDrawable="@drawable/ic_favorite_24dp">
+            app:startIconDrawable="@drawable/ic_favorite">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/alamat"
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField1"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +91,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filledTextField2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -104,7 +99,7 @@
             app:errorEnabled="true"
             app:helperTextEnabled="true"
             app:startIconContentDescription="@string/status"
-            app:startIconDrawable="@drawable/ic_favorite_24dp">
+            app:startIconDrawable="@drawable/ic_favorite">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/status"
@@ -121,10 +116,10 @@
             android:layout_marginTop="5dp">
 
             <Button
-                android:id="@+id/simpan_tambah_ubah"
+                android:id="@+id/save_add_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/tombol_bulat"
+                android:background="@drawable/btn_radius"
                 android:text="@string/save"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
