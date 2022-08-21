@@ -55,11 +55,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ModelData modelData = arrayModelData.get(position);
         String formatDate = dateFormatter.format(modelData.getTtl_data());
 
-        holder.nim.setText(this.context.getString(R.string.nim) + " : " + modelData.getNim_data());
-        holder.name.setText(this.context.getString(R.string.name) + " : " + modelData.getName_data());
-        holder.address.setText(this.context.getString(R.string.address) + " : " + modelData.getAddress_data());
-        holder.ttl.setText(this.context.getString(R.string.ttl) + " : " + formatDate);
-        holder.status.setText(this.context.getString(R.string.status) + " : " + modelData.getStatus_data());
+        holder.nim.setText(String.format("%s : %s", this.context.getString(R.string.name), modelData.getNim_data()));
+        holder.name.setText(String.format("%s : %s", this.context.getString(R.string.name), modelData.getName_data()));
+        holder.address.setText(String.format("%s : %s", this.context.getString(R.string.address), modelData.getAddress_data()));
+        holder.ttl.setText(String.format("%s : %s", this.context.getString(R.string.ttl), formatDate));
+        holder.status.setText(String.format("%s : %s", this.context.getString(R.string.status), modelData.getStatus_data()));
     }
 
     @Override
@@ -77,6 +77,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public void clear() {
         arrayModelData.clear();
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
