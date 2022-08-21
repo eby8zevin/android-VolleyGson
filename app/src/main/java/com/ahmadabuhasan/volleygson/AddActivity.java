@@ -35,7 +35,8 @@ import es.dmoral.toasty.Toasty;
 public class AddActivity extends AppCompatActivity {
 
     private ActivityTambahUpdateBinding binding;
-    private DateFormat dateShow;
+    DateFormat dateShow = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+    DateFormat dateProcess = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
     String[] status = {"Mahasiswa", "Dosen", "Mata Kuliah"};
 
     @Override
@@ -60,8 +61,6 @@ public class AddActivity extends AppCompatActivity {
         String status = Objects.requireNonNull(binding.status.getText()).toString();
 
         String ttl_input = Objects.requireNonNull(binding.ttl.getText()).toString();
-        dateShow = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-        DateFormat dateProcess = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         Date date = null;
         try {
             date = dateShow.parse(ttl_input);
