@@ -90,8 +90,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             nim = itemView.findViewById(R.id.nim);
-            name = itemView.findViewById(R.id.nama);
-            address = itemView.findViewById(R.id.alamat);
+            name = itemView.findViewById(R.id.name);
+            address = itemView.findViewById(R.id.address);
             ttl = itemView.findViewById(R.id.ttl);
             status = itemView.findViewById(R.id.status);
 
