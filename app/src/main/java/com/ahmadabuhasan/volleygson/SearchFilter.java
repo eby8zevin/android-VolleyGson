@@ -38,5 +38,6 @@ public class SearchFilter extends Filter {
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
         recyclerViewAdapter.arrayModelData = (ArrayList<ModelData>) results.values;
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 }
