@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:clickable="true"
-    android:focusable="true"
+    android:layout_margin="10dp"
     android:foreground="?android:selectableItemBackgroundBorderless"
     app:cardCornerRadius="25dp"
     app:cardElevation="25dp">
@@ -23,17 +21,17 @@
             android:id="@+id/nim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="3dp"
             android:text="@string/nim"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/nama"
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="3dp"
             android:singleLine="true"
             android:text="@string/name"
             android:textColor="@color/black"
@@ -41,10 +39,10 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/alamat"
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="3dp"
             android:text="@string/address"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -54,7 +52,7 @@
             android:id="@+id/ttl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginTop="3dp"
             android:text="@string/ttl"
             android:textColor="@color/black"
             android:textSize="20sp"
