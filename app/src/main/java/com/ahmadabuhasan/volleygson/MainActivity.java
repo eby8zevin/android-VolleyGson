@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivity mInstance;
     private static long back_pressed;
     private RecyclerViewAdapter adapter;
-    private ArrayList<ModelBarang> arrayModelData;
+    private ArrayList<ModelData> arrayModelData;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         String url = "https://blackpink-marketplace.000webhostapp.com/tugas/api/read";
         StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
             try {
-                Type typeModelData = new TypeToken<ArrayList<ModelBarang>>() {
+                Type typeModelData = new TypeToken<ArrayList<ModelData>>() {
                 }.getType();
                 arrayModelData = new Gson().fromJson(response, typeModelData);
 
