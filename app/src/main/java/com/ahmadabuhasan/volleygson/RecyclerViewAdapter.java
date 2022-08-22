@@ -55,7 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ModelData modelData = arrayModelData.get(position);
         String formatDate = dateFormatter.format(modelData.getTtl_data());
 
-        holder.nim.setText(String.format("%s : %s", this.context.getString(R.string.name), modelData.getNim_data()));
+        holder.nim.setText(String.format("%s : %s", this.context.getString(R.string.nim), modelData.getNim_data()));
         holder.name.setText(String.format("%s : %s", this.context.getString(R.string.name), modelData.getName_data()));
         holder.address.setText(String.format("%s : %s", this.context.getString(R.string.address), modelData.getAddress_data()));
         holder.ttl.setText(String.format("%s : %s", this.context.getString(R.string.ttl), formatDate));
